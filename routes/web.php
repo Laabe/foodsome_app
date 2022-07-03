@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +22,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('admin/restaurants', RestaurantController::class)->middleware('auth');
+Route::resource('admin/menus', MenuController::class)->middleware('auth');
+

@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin_layouts.home');
+        $title = 'Dashboard';
+        return view('admin_layouts.home', compact('title'));
     }
 }
