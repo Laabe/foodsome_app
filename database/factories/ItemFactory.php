@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Item;
+use App\Models\Menu;
+use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +20,11 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->word(),
+            'restaurant_id' => Restaurant::all()->random()->id,
+            'menu_id' => Menu::all()->random()->id,
+            'price' => $this->faker->randomFloat(2, 0, 200),
+            'description' => $this->faker->sentence(),
         ];
     }
 }

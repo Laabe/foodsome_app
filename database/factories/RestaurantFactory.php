@@ -19,6 +19,8 @@ class RestaurantFactory extends Factory
         return [
             'name' => $this->faker->streetName(),
             'delivery' => array_rand(['delivery' => '', 'takeout' => '', 'both' => '']),
+            'city' => $this->faker->city(),
+            'address' => $this->faker->address(),
             'description' => $this->faker->text,
             'phone' => $this->faker->phoneNumber(),
             'website' => $this->faker->domainName(),

@@ -28,7 +28,7 @@
             <div class="col-sm-6">
                 <label for="adress" class="form-label">Adress</label>
                 <input type="text" id="adress" name="adress" class="form-control"
-                    value="{{ old('adress') ?? $restaurant->adress }}" placeholder="Enter Restaurant Adress">
+                    value="{{ old('adress') ?? $restaurant->address }}" placeholder="Enter Restaurant Address">
 
                 @error('adress')
                     <small class="text-danger">{{ $message }}</small>
@@ -40,15 +40,15 @@
             <div class="form-label">Services</div>
             <div>
                 <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" checked="">
+                    <input class="form-check-input" type="radio" {{ $restaurant->delivery == 'delivery' ? 'checked' : '' }}>
                     <span class="form-check-label">Delivery</span>
                 </label>
                 <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio">
+                    <input class="form-check-input" type="radio" {{ $restaurant->delivery == 'takeout' ? 'checked' : '' }}>
                     <span class="form-check-label">Takeout</span>
                 </label>
                 <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio">
+                    <input class="form-check-input" type="radio" {{ $restaurant->delivery == 'both' ? 'checked' : '' }}>
                     <span class="form-check-label">Both</span>
                 </label>
             </div>
@@ -84,7 +84,11 @@
         </div>
         <div class="mb-3">
             <div class="form-label">Restaurant Image</div>
-            <input type="file" class="form-control">
+            <input type="file" name="image" id="image" class="form-control">
+
+            @error('image')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
         </div>
     </div>
     <div class="card-footer">

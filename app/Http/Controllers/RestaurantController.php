@@ -17,7 +17,7 @@ class RestaurantController extends Controller
     public function index()
     {
         $title = 'Restaurants';
-        $restaurants = Restaurant::paginate(6);
+        $restaurants = Restaurant::all();
         return view('admin_layouts.restaurants.index', compact('restaurants', 'title'));
     }
 
